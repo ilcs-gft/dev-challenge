@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <!--
+    This is the library that provides websocket streaming pub/sub
+    The dev serverver is serving the html and javascript, but it also provides updating fx data on /fx/prices.
+     -->
+    <script src="stomp.js"></script>
+    <script src="sparkline.js"></script>
+  </head>
+  <body>
+    <h1>Updating Table</h1>
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Current best bid</th>
+            <th>Current best ask</th>
+            <th>Last change bid</th>
+            <th>Last change ask</th>
+            <th>Spark line</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Notes</h2>
+
+      <p>I assumed I needed to use a Map because performs better in scenarios involving frequent additions than an Object.</p>
+      <p>
+        This approach makes a connection with the Stomp server, subscribes to its destination and using a queue implemented with a Map object renders the info
+        received from the server sorted in a table and adding a column using SparkLine
+      </p>
+      <p>To comply with the requirements, I added Jest for testing purposes and made tests for methods on queue.js and utils.js</p>
+      <p>To execute tests run <code>npm test</code> after <code>npm install</code></p>
+      <p>
+        I would have liked to use react as it is a library which would have efficiently update and re-render the table component isolated from the rest of the
+        DOM and is convenient for project maintenance over vanilla DOM manipulation.
+      </p>
+      <p>Ismael Carqués Torres</p>
+      <p>ilcs@gft.com</p>
+    </section>
+
+    <!-- Code you write in index.js and anything it depends on will be bundled into bundle.js and
+     is included here -->
+    <script src="bundle.js"></script>
+  </body>
+</html>
